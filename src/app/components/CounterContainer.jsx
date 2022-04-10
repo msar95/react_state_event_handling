@@ -1,6 +1,7 @@
 import React from "react";
 
 import { CounterStateless } from "./CounterStateless";
+import { ResetCounter } from "./ResetCounter";
 
 export class CounterContainer extends React.PureComponent {
     constructor(props){
@@ -17,11 +18,19 @@ export class CounterContainer extends React.PureComponent {
         })
     }
 
+    resetToZero() {
+        this.setState({
+            value : 0
+        });
+    }
+
     
     render() {
         return (
             <div>
                 <CounterStateless value={this.state.value} onClick={() => this.onIncrement()} />
+                <hr></hr>
+                <ResetCounter value={this.state.value} onClick={() => this.resetToZero()} />
             </div>
         )
     }
